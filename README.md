@@ -1,5 +1,6 @@
 # cse210-student-template
 This is the starter code for students in CSE 210.
+Oogely Boogely This a is a commit, I did the assignment right.
 
 This repository contains the starter code for many different projects. They are arranged as follows:
 
