@@ -38,7 +38,7 @@ class Program
                     Console.WriteLine("Pick a number between 1 and 4 you silly goose");
                     goto makeMenuChoice;
             }
-            Console.Clear();
+            
             Console.WriteLine("That was nice! What else would you like to do?");
         }
 

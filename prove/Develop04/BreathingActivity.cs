@@ -2,20 +2,20 @@ class BreathingActivity : Activity
 {
     public BreathingActivity(string name, string desc, int duration) : base(name, desc, duration)
     {
-        Console.Clear();
-        Console.WriteLine("Ready? Breathe in in ");
-        countDown(5);
+        
+        Console.WriteLine("Get ready to breathe in, starting in ");
+        countDown(3);
         DateTime endTime = DateTime.Now.AddSeconds(duration); // make a time in the future
         while (DateTime.Now < endTime) // while it is not yet that time (activity still going)
         {
             Console.Write("\nBreathe in... ");
             countDown(5);
             Console.Write("\nHold it... ");
-            countDown(5);
+            countDown(3);
             Console.Write("\nBreathe out... ");
             countDown(5);
             Console.Write("\nHold it... ");
-            countDown(5);
+            countDown(3);
         }
         showEnding();
     }
