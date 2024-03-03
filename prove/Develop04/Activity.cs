@@ -2,29 +2,43 @@ class Activity
 {
     private string _activityName;
     private string _descrption;
-    private int _duration;
+    protected int _duration; // some of the subroutines need this
 
     protected Activity(string name, string desc, int duration)
     {
         _activityName = name;
         _descrption = desc;
         _duration = duration;
-        Console.WriteLine($"\n\nThanks for coming to this {_activityName} activity! {_descrption} It will last for {_duration} seconds. Get ready and we'll start soon.");
-        dotsGoBrrr(7);
-        Console.Clear();
+        CommonBeginning();// show common intro message
+        StartActivity();
+        DateTime endTime = DateTime.Now.AddSeconds(duration); // run the activity body for x seconds
+        while (DateTime.Now < endTime) // while it is not yet time (activity still going)
+        {
+            RunActivity();
+        }
+        EndActivity();
+        CommonEnding(); // show the common outro message
     }
-    protected void showEnding()
+
+    protected void CommonBeginning()
     {
-        Console.Write("\nNice Job! ");
-        showSpinner(3);
-        Console.Write($"\nThanks for coming to the {_activityName} activity! This activity lasted {_duration} seconds. ");
-        showSpinner(6);
-        Console.WriteLine("\n\nPress Enter to continue...");
-        Console.ReadLine(); // wait for user to hit enter
+        Console.Write($"\nNow starting the {_activityName} activity.\n{_descrption}\nIt will last for {_duration} seconds. Get ready!.");
+        ShowDots(13);
         Console.Clear();
     }
 
-    protected void dotsGoBrrr(int duration) // duration in seconds
+    protected void CommonEnding()
+    {
+        Console.Write("\n\nNice job, you're done!");
+        ShowDots(3);
+        Console.Write($"\nThanks for doing this {_activityName} activity. This activity lasted {_duration} seconds.");
+        ShowDots(3);
+        Console.WriteLine("\n\nYou can scroll back and look or press Enter to continue...");
+        Console.ReadLine(); // wait for user to hit enter because I want them to see what they accomplished so you better not dock me points for this I swear
+        Console.Clear();
+    }
+
+    protected void ShowDots(int duration) // duration in seconds
     {
         duration *= 2;
         int dotPos = 0;
@@ -41,26 +55,56 @@ class Activity
                 Console.Write("    ");
                 Console.Write("\b\b\b\b");
             }
-
         }
+        for(int i = dotPos; i > 0; i--)
+        {
+            Console.Write("\b");
+        }
+        Console.Write("     ");
     }
 
-    protected void showSpinner(int duration) //duration in seconds
+    protected void ShowSpinner(int duration) //duration in seconds
     {
         duration *= 4;
-        List<char> spinnerBits = new List<char> { '|', '/', '-', '\\'};
+        List<char> spinnerBits = new List<char> { '|', '/', '-', '\\' };
         int spinnerIndex = 0;
         while (duration > 0)
         {
-            Console.Write(spinnerBits[spinnerIndex]);
+            Console.Write(" " + spinnerBits[spinnerIndex] + " "); // add spaces to make it look nicer
             Thread.Sleep(250);
-            Console.Write("\b");
+            Console.Write("\b\b\b");
             spinnerIndex++;
+            duration--;
             if (spinnerIndex == 4)
                 spinnerIndex = 0;
         }
-        Console.Write(" ");
+        Console.Write("   ");
+    }
+    protected void ShowCountdown(int length) // input length in seconds
+    {
+        length = Math.Abs(length); // no negative numbers
+        while (length > 0)
+        {
+            Console.Write(length);
+            if (length < 10)
+                Console.Write(" ");
+            Thread.Sleep(1000);
+            Console.Write("\b\b");
+            length -= 1;
+        }
+        Console.Write("  ");
+    }
 
-
+    protected virtual void StartActivity()
+    {
+        //Console.WriteLine("No Beginning Supplied!");
+    }
+    protected virtual void RunActivity() // each activity gets a starter function, body function, ending function
+    {
+        //Console.WriteLine("No Activity Supplied!");
+    }
+    protected virtual void EndActivity()
+    {
+        //Console.WriteLine("No Ending Supplied!");
     }
 }
