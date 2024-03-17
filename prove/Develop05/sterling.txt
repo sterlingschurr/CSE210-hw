@@ -1,0 +1,3 @@
+User||Sterling||30
+Goal||go to bed||at 1130||10||True
+EternalGoal||read||read your holy scripts||10||False

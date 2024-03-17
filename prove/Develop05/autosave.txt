@@ -1,0 +1,4 @@
+User||sterling||9110
+Goal||goal||normal||10||True
+EternalGoal||et||ernal||1000||False
+ChecklistGoal||dpdpp||www||3000||True||10||10||10
