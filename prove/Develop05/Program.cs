@@ -2,6 +2,9 @@ using System;
 
 class Program
 {
+    // THINGS I DID EXTRA
+    // -- improved the interface
+    // added an autosave function, so you won't lose changes you forgot to save
     static void Main(string[] args)
     {
         Console.Clear();
