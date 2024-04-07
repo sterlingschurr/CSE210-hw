@@ -1,0 +1,7 @@
+Item||9090||genericItem||False||0||1970-01-01
+ItemCamera||1595||cameraItem||False||0||55||12||1970-01-01
+ItemTripod||36512||tripodItem||False||0||100||1970-01-01
+ItemProjector||18916||projectorItem||False||0||200||1970-01-01
+User||doug||vinny||86769||0
+User||shawn||spencer||82189||0
+User||captain||america||74474||0
