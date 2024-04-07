@@ -25,9 +25,7 @@ class User
         Console.WriteLine($"{_firstName} {_lastName} created as new user");
     }
     public string GetFirstName() { return _firstName; }
-    public void SetFirstName(string name) { _firstName = name; }
     public string GetLastName() { return _lastName; }
-    public void SetLastName(string name) { _lastName = name; }
     public int GetID() { return _userID; }
     public void SetID(int number) { _userID = number; }
     public List<int> GetOpenCheckoutIDs() { return _openCheckoutIDs; }
